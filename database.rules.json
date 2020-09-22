@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "metadata": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      }
+    }
+  }
+}

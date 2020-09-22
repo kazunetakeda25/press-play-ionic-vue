@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /conversations/{id} {
+      allow read: if request.auth.uid == resource.data.user1 || request.auth.uid == resource.data.user2;
+      match /messages/{document=**} {
+        allow read: if request.auth.uid == get(/databases/$(database)/documents/conversations/$(id)).data.user1 || request.auth.uid == get(/databases/$(database)/documents/conversations/$(id)).data.user2;
+      }
+    }
+    match /songmates/{id} {
+      allow read: if request.auth.uid == resource.data.matchedTo || request.auth.uid == resource.data.matchedBy;
+    }
+    match /songstory_answers/{id} {
+    	allow create: if request.auth != null;
+    	allow read, write, delete: if request.auth.uid == resource.data.uid;
+    }
+    match /songstory_categories/{id} {
+    	allow read: if true;
+    }
+    match /songstory_questions/{id} {
+    	allow read: if true;
+      match /{allSubcollections=**} {
+      	allow read: if true;
+      }
+    }
+  	match /users/{id} {
+      allow read: if request.auth.uid == id;
+      allow create: if request.auth.uid != null;
+      match /{allSubcollections=**} {
+        allow read: if request.auth.uid == id;
+      }
+    }
+    match /users_browse/{id} {
+      allow read: if request.auth.uid == resource.data.user1 || request.auth.uid == resource.data.user2;
+    }
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

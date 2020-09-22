@@ -1,0 +1,186 @@
+@mixin fadeGradient($dir: "to bottom", $start: rgba(255, 255, 255, 0), $end: #ffffff) {
+  content: "";
+  background-image: linear-gradient(#{$dir}, #{$start}, #{$end}) !important;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+[class*="fade-to"] {
+  position: relative;
+}
+
+/* Logos
+ ========================================================================== */
+ i.logo-vertical-contrast {
+  background-image: url("./assets/logo/logo-vertical-contrast.svg");
+  background-position: 0 0;
+  background-size: 100% 100%;
+  display: inline-block;
+  height: 350px;
+  width: 320px;
+}
+
+/* Horizontal gradients
+ ========================================================================== */
+.primary-horizontal-gradient {
+  --background: var(--primary-horizontal-gradient);
+  --background-activated: var(--primary-horizontal-gradient-state);
+  --background-focused: var(--primary-horizontal-gradient-state);
+  --background-hover: var(--primary-horizontal-gradient-state);
+}
+.secondary-horizontal-gradient {
+  --background: var(--secondary-horizontal-gradient);
+  --background-activated: var(--secondary-horizontal-gradient-state);
+  --background-focused: var(--secondary-horizontal-gradient-state);
+  --background-hover: var(--secondary-horizontal-gradient-state);
+}
+.blurple-horizontal-gradient {
+  --background: var(--blurple-horizontal-gradient);
+  --background-activated: var(--blurple-horizontal-gradient-state);
+  --background-focused: var(--blurple-horizontal-gradient-state);
+  --background-hover: var(--blurple-horizontal-gradient-state);
+}
+.bright-horizontal-gradient {
+  --background: var(--bright-horizontal-gradient);
+  --background-activated: var(--bright-horizontal-gradient-state);
+  --background-focused: var(--bright-horizontal-gradient-state);
+  --background-hover: var(--bright-horizontal-gradient-state);
+}
+.purple-horizontal-gradient {
+  --background: var(--purple-horizontal-gradient);
+  --background-activated: var(--purple-horizontal-gradient-state);
+  --background-focused: var(--purple-horizontal-gradient-state);
+  --background-hover: var(--purple-horizontal-gradient-state);
+}
+.fade-to-left:before {
+  @include fadeGradient("to left");
+}
+.fade-to-right:before {
+  @include fadeGradient("to right");
+}
+
+/* Vertical gradients
+ ========================================================================== */
+.primary-vertical-gradient {
+  --background: var(--primary-vertical-gradient);
+  --background-activated: var(--primary-vertical-gradient-state);
+  --background-focused: var(--primary-vertical-gradient-state);
+  --background-hover: var(--primary-vertical-gradient-state);
+}
+.secondary-vertical-gradient {
+  --background: var(--secondary-vertical-gradient);
+  --background-activated: var(--secondary-vertical-gradient-state);
+  --background-focused: var(--secondary-vertical-gradient-state);
+  --background-hover: var(--secondary-vertical-gradient-state);
+}
+.blurple-vertical-gradient {
+  --background: var(--blurple-vertical-gradient);
+  --background-activated: var(--blurple-vertical-gradient-state);
+  --background-focused: var(--blurple-vertical-gradient-state);
+  --background-hover: var(--blurple-vertical-gradient-state);
+}
+.bright-vertical-gradient {
+  --background: var(--bright-vertical-gradient);
+  --background-activated: var(--bright-vertical-gradient-state);
+  --background-focused: var(--bright-vertical-gradient-state);
+  --background-hover: var(--bright-vertical-gradient-state);
+}
+.purple-vertical-gradient {
+  --background: var(--purple-vertical-gradient);
+  --background-activated: var(--purple-vertical-gradient-state);
+  --background-focused: var(--purple-vertical-gradient-state);
+  --background-hover: var(--purple-vertical-gradient-state);
+}
+.fade-to-bottom:before {
+  @include fadeGradient("to bottom");
+}
+.fade-to-top:before {
+  @include fadeGradient("to top");
+}
+
+/* Radial gradients
+ ========================================================================== */
+.purple-radial-gradient {
+  --background: var(--purple-radial-gradient);
+}
+.secondary-radial-gradient {
+  --background: var(--secondary-radial-gradient);
+}
+
+/* SongStory Question header, footer
+ ========================================================================== */
+ #songstory-question-wrapper {
+  ion-footer, ion-header {
+    position: relative;
+  }
+  ion-header:before {
+    @include fadeGradient("to bottom", rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  }
+  ion-footer:before {
+    @include fadeGradient("to bottom", rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.2));
+  }
+}
+
+/* Profile banner
+ ========================================================================== */
+.profile-banner {
+  background: url("./assets/backgrounds/profile-banner.svg") 0 0 repeat-x;
+  & + .profile-header {
+    margin-top: ((5/16) * 0.75) * -100%;
+  }
+}
+@media (max-width: 768px) {
+  .profile-banner + .profile-header {
+    margin-top: ((9/16) * 0.6) * -100%;
+  }
+}
+
+/* SVG Fills
+ ========================================================================== */
+.fill-primary {
+  fill: var(--ion-color-primary, #3880ff);
+}
+.fill-secondary {
+  fill: var(--ion-color-secondary, #3dc2ff);
+}
+.fill-tertiary {
+  fill: var(--ion-color-tertiary, #5260ff);
+}
+.fill-success {
+  fill: var(--ion-color-success, #2dd36f);
+}
+.fill-warning {
+  fill: var(--ion-color-warning, #ffc409);
+}
+.fill-danger {
+  fill: var(--ion-color-danger, #eb445a);
+}
+.fill-light {
+  fill: var(--ion-color-light, #f4f5f8);
+}
+.fill-medium {
+  fill: var(--ion-color-medium, #92949c);
+}
+.fill-dark {
+  fill: var(--ion-color-dark, #222428);
+}
+
+/* Misc bgs
+ ========================================================================== */
+.signup-bg {
+  background-image: url("./assets/backgrounds/signup-banner.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -40vh;
+  background-position-x: 10%;
+}
+.soundbar-bg {
+  background: url("./assets/backgrounds/soundbar.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: 50% 50%;
+}

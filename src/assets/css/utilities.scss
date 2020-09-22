@@ -1,0 +1,282 @@
+/* Center align an object
+ ========================================================================== */
+.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Vertical flex utility
+ * Allows for vertical row alignment with ion-grid
+ ========================================================================== */
+[class*="align-content"] {
+  display: flex;
+  flex-direction: column;
+  flex-flow: row wrap;
+}
+.align-content-center {
+  align-content: center;
+}
+.align-content-end {
+  align-content: flex-end;
+}
+.align-content-start {
+  align-content: flex-start;
+}
+.align-content-space-between {
+  align-content: space-between;
+}
+.align-content-space-around {
+  align-content: space-around;
+}
+ion-grid[class*='align-content'] {
+  min-height: 100%;
+  > ion-row {
+    width: 100%;
+  }
+}
+
+/* Content grid utility
+ ========================================================================== */
+ion-grid.content-grid {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+  height: 100%;
+  min-height: var(--min-height);
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  > ion-row,
+  > ion-row > ion-col {
+    height: 100%;
+    min-height: var(--min-height);
+  }
+  > ion-row > ion-col {
+    --padding-start: 0;
+    --padding-end: 0;
+    --padding-top: 0;
+    --padding-bottom: 0;
+    padding: 0;
+  }
+}
+
+/* Content card utility
+ ========================================================================== */
+ion-card.content-card {
+  --border-radius: 0;
+  --margin: 0;
+  --min-height: var(--content-height);
+  border-radius: var(--border-radius);
+  margin-top: var(--margin);
+  margin-bottom: var(--margin);
+  min-height: var(--min-height);
+}
+@media (min-width: 992px) {
+  ion-card.content-card {
+    --border-radius: 12px;
+    --margin: 16px;
+    --min-height: calc(var(--content-height) - (var(--margin) * 2));
+  }
+}
+@media (min-width: 1200px) {
+  ion-card.content-card {
+    --margin: 32px;
+  }
+}
+
+/* Max width utilitie
+ * Contains and centers a page for larger screens
+ ========================================================================== */
+.max-width {
+  margin: 0 auto;
+  width: 100%;
+}
+@media (min-width: 992px) {
+  .max-width {
+    max-width: var(--ion-grid-width-lg,var(--ion-grid-width,960px));
+  }
+}
+@media (min-width: 1200px) {
+  .max-width {
+    max-width: var(--ion-grid-width-xl,var(--ion-grid-width,1140px));
+  }
+}
+
+/* Responsive objects
+ ========================================================================== */
+
+/*
+ * Preserve original dimensions
+ * Because `img, `video`, `canvas` and  `audio` are already responsive by default
+ */
+.preserve-width,
+.preserve-width canvas,
+.preserve-width img,
+.preserve-width svg,
+.preserve-width video { max-width: none; }
+
+/*
+* Responsiveness
+* Corrects `max-width` and `max-height` behavior if padding and border are used
+*/
+.responsive-width,
+.responsive-height { box-sizing: border-box; }
+
+/*
+* 1. Set a maximum width. `important` needed to override `preserve-width img`
+* 2. Auto scale the height. Only needed if `height` attribute is present
+*/
+.responsive-width {
+  /* 1 */
+  max-width: 100% !important;
+  /* 2 */
+  height: auto;
+}
+
+ /*
+  * 1. Set a maximum height. Only works if the parent element has a fixed height
+  * 2. Auto scale the width. Only needed if `width` attribute is present
+  * 3. Reset max-width, which `img, `video`, `canvas` and  `audio` already have by default
+  */
+
+.responsive-height {
+  /* 1 */
+  max-height: 100%;
+  /* 2 */
+  width: auto;
+  /* 3 */
+  max-width: none;
+}
+
+/* Misc
+ ========================================================================== */
+
+// White slide bullet
+ion-slides.white-bullet {
+  --bullet-background-active: #ffffff;
+}
+
+// i.img utility for screen readers
+i.img {
+  -ms-high-contrast-adjust: none;
+  u {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    left: auto;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+}
+
+// Search results popover
+ion-popover.search-results {
+  --width: 100%;
+  --max-height: 300px;
+}
+
+// Settings icon
+ion-avatar.settings-icon {
+  background: var(--blurple-vertical-gradient);
+  color: var(--ion-color-light, #ffffff);
+  height: 256px;
+  width: 256px;
+}
+@media (max-width: 1200px) {
+  ion-avatar.settings-icon {
+    height: 128px;
+    width: 128px;
+  }
+}
+
+// Segment buttons in ion-item
+ion-item.segment-item {
+  --ion-safe-area-right: 0;
+  --inner-padding-bottom: 0;
+  --inner-padding-start: 0;
+  --inner-padding-top: 0;
+  --padding-bottom: 0;
+  --padding-end: 0;
+  --padding-start: 0;
+  --padding-top: 0;
+  ion-segment {
+    --color: var(--ion-color-contrast, var(--ion-item-color,var(--ion-text-color,#000)));
+    --color-checked: var(--ion-color-contrast, var(--ion-color-system));
+    --indicator-color: transparent;
+    --indicator-color-checked: transparent;
+    --indicator-height: 0;
+    ion-segment-button {
+      --background-focused: var(--ion-item-background-focused,var(--ion-color-step-100,#e1e1e1));
+      --background-focused-opacity: 1;
+      --background-hover: var(--ion-item-background-hover,rgba(var(--ion-text-color-rgb,0,0,0),0.04));
+      --background-hover-opacity: 1;
+      --border-color: transparent;
+      --border-radius: 0;
+      --border-width: 0;
+    }
+  }
+  &:not(.ion-color) ion-segment {
+    --color: var(--ion-item-color,var(--ion-text-color,#000));
+    --color-checked: var(--ion-color-system);
+  }
+}
+
+// Privacy modal
+ion-modal.privacy-modal {
+  --max-height: 80%;
+  --max-width: 80%;
+}
+
+/*  Prev / next nav for ion-slides
+========================================================================== */
+.slide-container {
+  position: relative;
+  .slide-nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+    &::before, &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 33%;
+      z-index: 3;
+    }
+    &::before {
+      background-image: linear-gradient(to right, #fff, transparent);
+      left: 0;
+    }
+    &::after {
+      background-image: linear-gradient(to left, #fff, transparent);
+      right: 0;
+    }
+  }
+}
+
+// Vertical align ion-slide
+.swiper-wrapper {
+  align-items: center;
+}
+
+// Drop shadow utility
+.box-shadow {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}

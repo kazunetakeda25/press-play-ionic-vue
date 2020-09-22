@@ -1,0 +1,99 @@
+// toolbar-bg
+$toolbar-bg-height: 54px;
+ion-header.toolbar-bg {
+  --toolbar-height: #{$toolbar-bg-height};
+  background: url("./assets/backgrounds/toolbar-header.svg") center bottom repeat-x;
+  padding-bottom: calc(var(--toolbar-height) / 2);
+  ion-toolbar {
+    --min-height: var(--toolbar-height);
+  }
+}
+ion-footer.toolbar-bg {
+  --toolbar-height: #{$toolbar-bg-height};
+  background: url("./assets/backgrounds/toolbar-footer.svg") center top repeat-x;
+  padding-top: calc(var(--toolbar-height) / 2);
+  ion-toolbar {
+    --min-height: var(--toolbar-height);
+  }
+}
+
+// Browse toolbar
+ion-header.browse-header {
+  ion-toolbar {
+    --min-height: 64px;
+    .toolbar-avatar {
+      padding: 8px;
+    }
+  }
+}
+
+// Primary toolbar segments
+ion-toolbar.ion-color-primary ion-segment:not(.ion-color) > ion-segment-button {
+  --color-checked: var(--ion-color-secondary) !important;
+  --indicator-color-checked: var(--ion-color-secondary) !important;
+}
+
+// No style utility for headers and footers
+@mixin no-style-utility {
+  --background: transparent;
+  &:after,
+  &:before {
+    background-image: none;
+  }
+  ion-toolbar {
+    --border-width: 0 !important;
+  }
+}
+ion-header.no-style,
+ion-footer.no-style {
+  @include no-style-utility;
+}
+
+@media (min-width: 576px) {
+  ion-header.no-style-sm-up,
+  ion-footer.no-style-sm-up {
+    @include no-style-utility;
+  }
+}
+@media (max-width: 576px) {
+  ion-header.no-style-sm-down,
+  ion-footer.no-style-sm-down {
+    @include no-style-utility;
+  }
+}
+@media (min-width: 768px) {
+  ion-header.no-style-md-up,
+  ion-footer.no-style-md-up {
+    @include no-style-utility;
+  }
+}
+@media (max-width: 768px) {
+  ion-header.no-style-md-down,
+  ion-footer.no-style-md-down {
+    @include no-style-utility;
+  }
+}
+@media (min-width: 992px) {
+  ion-header.no-style-lg-up,
+  ion-footer.no-style-lg-up {
+    @include no-style-utility;
+  }
+}
+@media (max-width: 992px) {
+  ion-header.no-style-lg-down,
+  ion-footer.no-style-lg-down {
+    @include no-style-utility;
+  }
+}
+@media (min-width: 1200px) {
+  ion-header.no-style-xl-up,
+  ion-footer.no-style-xl-up {
+    @include no-style-utility;
+  }
+}
+@media (max-width: 1200px) {
+  ion-header.no-style-xl-down,
+  ion-footer.no-style-xl-down {
+    @include no-style-utility;
+  }
+}

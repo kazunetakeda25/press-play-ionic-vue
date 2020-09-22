@@ -1,0 +1,80 @@
+.form {
+  background: rgba(0,0,0,0) !important;
+  ion-item {
+    &.md {
+      --border-radius: 4px;
+    }
+    &.ios {
+      --border-radius: 12px;
+    }
+    &.no-style {
+      --background: rgba(0,0,0,0);
+      --background-activated: rgba(0,0,0,0);
+      --background-focused: rgba(0,0,0,0);
+      --background-hover: rgba(0,0,0,0);
+      --border-color: rgba(0,0,0,0);
+      --border-width: 0;
+      --ion-background: rgba(0,0,0,0);
+    }
+    &.item-join-next {
+      --border-width: 1px 1px 0 1px !important;
+      --border-radius: var(--border-radius) var(--border-radius) 0 0;
+      + ion-item {
+        --border-radius: 0 0 var(--border-radius) var(--border-radius);
+        --border-width: 0px 1px 1px 1px !important;
+        margin-top: 0;
+      }
+    }
+  }
+  > * + *,
+  ion-item-group > ion-item + ion-item {
+    margin-top: var(--ion-margin, 16px);
+  }
+  &.white {
+    ion-item:not(.no-style) {
+      --background: rgba(255,255,255, 0.8);
+      --border-color: rgba(0, 0, 0, 0.1);
+      --border-width: 1px;
+      &.item-has-focus {
+        --border-color: rgba(0,0,0,0.2);
+      }
+    }
+  }
+  &.transparent {
+    ion-item {
+      --ion-color-base: #fff;
+      --color: var(--ion-color-base);
+    }
+    ion-item:not(.no-style) {
+      --background: rgba(255,255,255, 0.15);
+      --background-activated: rgba(255,255,255, 0.15);
+      --background-focused: rgba(255,255,255, 0.15);
+      --background-hover: rgba(255,255,255, 0.15);
+      --ion-background: rgba(255,255,255, 0.15);
+      --border-color: rgba(0,0,0,0);
+      --border-width: 1px;
+      &.item-has-focus {
+        --border-color: #fff;
+      }
+    }
+  }
+}
+
+// Inputs
+ion-item {
+  &.item-has-focus:not(.ion-color) {
+    .label-stacked, .label-floating {
+      color: var(--ion-color-system);
+    }
+  }
+  --highlight-color-focused: var(--ion-color-system);
+}
+ion-select {
+  color: var(--ion-color-base, var(--ion-color-system));
+}
+ion-item:not(.ion-color) ion-select {
+  color: var(--ion-color-system);
+}
+ion-radio, ion-checkbox {
+  --color-checked: var(--ion-color-system);
+}

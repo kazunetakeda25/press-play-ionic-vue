@@ -1,0 +1,179 @@
+/* Global gender colors
+ ========================================================================== */
+$none-gender-expression-color: #8B878D;
+$male-gender-expression-color: #3D83FB;
+$female-gender-expression-color: #FF229A;
+$other-gender-expression-color: #faecc0;
+
+/* Global gender mixins
+ ========================================================================== */
+
+@mixin none-expression-bg {
+  background: radial-gradient(50% 50% at 50% 50%, lighten($other-gender-expression-color, 20%) 0%, rgba(207, 155, 255, 0) 100%), $none-gender-expression-color;
+}
+@mixin male-expression-bg {
+  background: radial-gradient(50% 50% at 50% 50%, lighten($male-gender-expression-color, 20%) 0%, rgba(207, 155, 255, 0) 100%), $male-gender-expression-color;
+}
+@mixin female-expression-bg {
+  background: radial-gradient(50% 50% at 50% 50%, lighten($female-gender-expression-color, 20%) 0%, rgba(207, 155, 255, 0) 100%), $female-gender-expression-color;
+}
+@mixin other-expression-bg {
+  background: radial-gradient(50% 50% at 50% 50%, lighten($other-gender-expression-color, 5%) 0%, rgba(207, 155, 255, 0) 100%), $other-gender-expression-color;
+}
+@mixin gender-identity-bg($img) {
+  ion-avatar.gender-identity {
+    position: relative;
+    border-width: 0;
+    & > div {
+      z-index: 3;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-image: url($img);
+      border-radius: 50%;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        margin: 5%;
+    }
+  }
+}
+
+/* Gender icon
+ ========================================================================== */
+ion-avatar.gender-identity {
+  background: $none-gender-expression-color;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  & > ion-icon {
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+    width: 50%;
+    height: 50%;
+    z-index: 3;
+  }
+}
+
+.male-expression, .female-expression {
+  ion-avatar.gender-identity > ion-icon {
+    color: #fff;
+  }
+}
+
+:not([class*='-orientation']) {
+  &.none-expression ion-avatar.gender-identity  {
+    @include none-expression-bg;
+  }
+  &.male-expression ion-avatar.gender-identity  {
+    @include male-expression-bg;
+  }
+  &.female-expression ion-avatar.gender-identity  {
+    @include female-expression-bg;
+  }
+  &.other-expression ion-avatar.gender-identity  {
+    @include other-expression-bg;
+  }
+}
+
+[class*='-orientation'] {
+  &.none-expression ion-avatar.gender-identity:after  {
+    @include none-expression-bg;
+  }
+  &.male-expression ion-avatar.gender-identity:after  {
+    @include male-expression-bg;
+  }
+  &.female-expression ion-avatar.gender-identity:after  {
+    @include female-expression-bg;
+  }
+  &.other-expression ion-avatar.gender-identity:after  {
+    @include other-expression-bg;
+  }
+}
+
+.none-expression, .male-expression, .female-expression, .other-expression {
+  &.asexual-orientation {
+    @include gender-identity-bg('./assets/icons/orientation-asexual.svg');
+  }
+  &.bisexual-orientation {
+    @include gender-identity-bg('./assets/icons/orientation-bisexual.svg');
+  }
+  &.gay-orientation {
+    @include gender-identity-bg('./assets/icons/orientation-gay.svg');
+  }
+  &.none-orientation {
+    @include gender-identity-bg('./assets/icons/orientation-none.svg');
+  }
+  &.pansexual-orientation {
+    @include gender-identity-bg('./assets/icons/orientation-pansexual.svg');
+  }
+  &.straight-orientation {
+    @include gender-identity-bg('./assets/icons/orientation-straight.svg');
+  }
+}
+
+/* Gender expression
+ ========================================================================== */
+ion-avatar.gender-expression {
+  margin: 0 auto;
+  & > ion-icon {
+    display: block;
+    height: 100%;
+    margin: 0 auto;
+  }
+  &.none {
+    background-color: $none-gender-expression-color;
+    > ion-icon {
+      color: #fff;
+    }
+  }
+  &.male {
+    background-color: $male-gender-expression-color;
+    > ion-icon {
+      color: #fff;
+    }
+  }
+  &.female {
+    background-color: $female-gender-expression-color;
+    > ion-icon {
+      color: #fff;
+    }
+  }
+  &.other {
+    background-color: $other-gender-expression-color;
+  }
+}
+
+/* Sexual orientation
+ ========================================================================== */
+ion-avatar.sexual-orientation {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  & > ion-icon {
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    transform: perspective(1px) translateY(-50%);
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
+}
